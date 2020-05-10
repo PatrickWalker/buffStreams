@@ -13,8 +13,6 @@ jobs:
       with:
         go-version: ${{ matrix.go-version }}
     - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Run GolangCI-Lint Action by pulling pre-built image
-      uses: docker://matousdz/golangci-lint-action:v1.0.0      
+      uses: actions/checkout@v2    
     - name: Test
       run: go test  github.com/buffup/api/...
