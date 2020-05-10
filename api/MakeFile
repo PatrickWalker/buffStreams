@@ -1,0 +1,20 @@
+PROJECT_NAME := buff-api
+
+
+docker: 
+	go get -v -d ./...
+	$(ENV) GOARCH=amd64$(BREAK)  $(ENV) GOOS=linux$(BREAK) go build -ldflags="-w -s" -o /go/bin/$(PROJECT_NAME) 
+ci: build
+lint: 
+	golangci-lint run
+test: lint
+build-windows-x64: test
+build-windows-x64:
+	$(ENV) GOARCH=amd64$(BREAK)  $(ENV) GOOS=windows$(BREAK) go build -ldflags="-w -s" -o bin/$(PROJECT_NAME)-windows
+
+build-linux-x64: test
+build-linux-x64: 
+	$(ENV) GOARCH=amd64$(BREAK)  $(ENV) GOOS=linux$(BREAK) go build -ldflags="-w -s" -o bin/$(PROJECT_NAME)-linux64
+
+build: build-windows-x64 
+build: build-linux-x64 

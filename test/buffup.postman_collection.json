@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "2e001e17-14dc-4e3f-8c89-26f21e076a95",
+		"name": "buffup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3c38a676-12cb-4dd3-bd1a-68b4cac95a71",
+						"exec": [
+							"pm.test(\"Check response values\", function () {\r",
+							"      var jsonData = pm.response.json();\r",
+							"      pm.expect(jsonData.options).to.be.an('array');\r",
+							"      pm.expect(jsonData.text).to.be.a('string');\r",
+							"      pm.expect(jsonData.id).to.eql(1);      \r",
+							"  });\r",
+							"  \r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.have.header(\"Content-Encoding\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1323/questions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"questions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "questions Invalid ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6aff159d-ea21-410d-9893-9af6e53ff8f0",
+						"exec": [
+							"pm.test(\"Check response values\", function () {\r",
+							"      var jsonData = pm.response.json();\r",
+							"      pm.expect(jsonData.error).to.be.a('string');\r",
+							"      pm.expect(jsonData.error).to.contain(\"Invalid Question ID Supplied\")\r",
+							"      pm.expect(jsonData.error).to.contain(\"one\")\r",
+							"  });\r",
+							"  \r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.have.header(\"Content-Encoding\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1323/questions/one",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"questions",
+						"one"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "questions 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "488f59c3-9178-4e50-a5d6-ad150f204ea2",
+						"exec": [
+							"pm.test(\"Check response values\", function () {\r",
+							"      var jsonData = pm.response.json();\r",
+							"      pm.expect(jsonData.Details).to.be.a('string');\r",
+							"      pm.expect(jsonData.Details).to.contain(\"not found\")\r",
+							"      pm.expect(jsonData.Details).to.contain(\"0\")\r",
+							"  });\r",
+							"  \r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.have.header(\"Content-Encoding\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1323/questions/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"questions",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "streams list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbd0d7f5-9913-4735-81bd-7a7026065bf7",
+						"exec": [
+							"pm.test(\"Check response values\", function () {\r",
+							"      var jsonData = pm.response.json();\r",
+							"      pm.expect(jsonData.streams).to.be.an('array');\r",
+							"      pm.expect(jsonData.pageSize).to.eql(10);\r",
+							"      pm.expect(jsonData.pageNum).to.eql(1);\r",
+							"      pm.expect(jsonData.totalPages).to.eql(2);      \r",
+							"  });\r",
+							"  \r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.have.header(\"Content-Encoding\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1323/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "streams list Page 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "437ba2fd-2af0-4809-82b1-1361173edab4",
+						"exec": [
+							"pm.test(\"Check response values\", function () {\r",
+							"      var jsonData = pm.response.json();\r",
+							"      pm.expect(jsonData.streams).to.be.an('array');\r",
+							"      pm.expect(jsonData.pageSize).to.eql(10);\r",
+							"      pm.expect(jsonData.pageNum).to.eql(2);\r",
+							"      pm.expect(jsonData.totalPages).to.eql(2);      \r",
+							"  });\r",
+							"  \r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.have.header(\"Content-Encoding\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1323/streams?page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"streams"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "streams list Invalid Page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eefc4270-1bbb-49ea-a1e9-2a87a175bcfa",
+						"exec": [
+							"pm.test(\"Check response values\", function () {\r",
+							"      var jsonData = pm.response.json();\r",
+							"      pm.expect(jsonData.error).to.be.a('string');\r",
+							"      pm.expect(jsonData.error).to.contain(\"Invalid Page Number Supplied\")\r",
+							"      pm.expect(jsonData.error).to.contain(\"two\")\r",
+							"  });\r",
+							"  \r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.have.header(\"Content-Encoding\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1323/streams?page=two",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"streams"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "two"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

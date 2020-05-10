@@ -1,0 +1,8 @@
+{
+"DBUser" : "root",
+"DBPassword" : "patricktest",
+"DBHost" : "localhost:3306",
+"DBSchema" : "buffup",
+"DBArgs" : "multiStatements=true&parseTime=true",
+"PageSize" : "10"
+}

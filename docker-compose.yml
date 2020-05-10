@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  db:
+    image: mysql:8
+    container_name: buffup.tv-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: "buffup"
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: "patricktest"
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - ./db:/var/lib/mysql
+  api:
+    image: buffup.tv/api:dev
+    container_name: buffup.tv-api
+    build:
+      context: ./api
+    environment:
+      DB_HOST: "cynalytica-db"
+      DB_PASS: "3306"
+    depends_on:
+      - db
+    ports:
+      - "1323:1323"      
+    expose:
+      - "1323"
+    volumes:
+      - "./api/config.json:/go/bin/config.json"
+    restart: always
