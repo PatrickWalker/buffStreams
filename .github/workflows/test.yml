@@ -15,6 +15,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2    
     - name: Build
-      run: go build .      
+      run: go build . 
+      working-directory: ./api     
     - name: Test
       run: go test  github.com/PatrickWalker/buffStreams/...
+      working-directory: ./api      
