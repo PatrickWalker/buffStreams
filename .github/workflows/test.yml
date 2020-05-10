@@ -15,6 +15,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Run GolangCI-Lint Action by pulling pre-built image
-      uses: docker://matoous/golangci-lint-action:v1.1.0      
+      uses: docker://matousdz/golangci-lint-action:v1.0.0      
     - name: Test
       run: go test  github.com/buffup/api/...
