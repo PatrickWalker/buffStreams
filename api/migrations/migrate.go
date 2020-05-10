@@ -5,7 +5,7 @@ import (
 
 	"fmt"
 
-	helpers "github.com/buffup/api/helpers"
+	helpers "github.com/PatrickWalker/buffStreams/helpers"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/mysql"
 )

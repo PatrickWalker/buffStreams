@@ -5,7 +5,7 @@ FROM golang:1.13-alpine AS builder
 # Install git.
 # Git is required for fetching the dependencies.
 RUN apk update && apk add --no-cache git && apk add --update make
-WORKDIR $GOPATH/src/github.com/buffup/api
+WORKDIR $GOPATH/src/github.com/PatrickWalker/buffStreams
 COPY . .
 # Fetch dependencies.
 RUN  make -f MakeFile docker

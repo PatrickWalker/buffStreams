@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strconv"
 
-	helpers "github.com/buffup/api/helpers"
-	repo "github.com/buffup/api/repositories"
+	helpers "github.com/PatrickWalker/buffStreams/helpers"
+	repo "github.com/PatrickWalker/buffStreams/repositories"
 
 	"github.com/julienschmidt/httprouter"
 

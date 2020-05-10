@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	helpers "github.com/buffup/api/helpers"
+	helpers "github.com/PatrickWalker/buffStreams/helpers"
 )
 
 // QuestionsRepo type handles access to the underlying data store for Stream Info

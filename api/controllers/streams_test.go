@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	repo "github.com/buffup/api/repositories"
+	repo "github.com/PatrickWalker/buffStreams/repositories"
 	"github.com/julienschmidt/httprouter"
 	"github.com/stretchr/testify/assert"
 )

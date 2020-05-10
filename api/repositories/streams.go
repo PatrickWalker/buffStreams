@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	helpers "github.com/buffup/api/helpers"
+	helpers "github.com/PatrickWalker/buffStreams/helpers"
 )
 
 //SRInterface allows us to unit test the controller

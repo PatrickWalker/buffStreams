@@ -5,9 +5,9 @@ import (
 	_ "github.com/golang-migrate/migrate/v4/database/mysql"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 
-	controllers "github.com/buffup/api/controllers"
-	helpers "github.com/buffup/api/helpers"
-	migrations "github.com/buffup/api/migrations"
+	controllers "github.com/PatrickWalker/buffStreams/controllers"
+	helpers "github.com/PatrickWalker/buffStreams/helpers"
+	migrations "github.com/PatrickWalker/buffStreams/migrations"
 
 	"log"
 	"net/http"
